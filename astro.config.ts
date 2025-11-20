@@ -19,6 +19,9 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  // When deploying to a subdirectory (e.g. example.com/blorf-writeups/)
+  // set the `base` option so generated URLs include the subpath.
+  base: '/blorf-writeups/',
   site: 'https://astro-erudite.vercel.app',
   integrations: [
     expressiveCode({
