@@ -16,6 +16,9 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
@@ -43,27 +46,50 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  /* Theme: Dimension (light fallbacks) - generated 2025-11-20 */
+  --background: oklch(0.995 0 0);
+  --foreground: oklch(0.14 0.01 260);
+  --primary: oklch(0.22 0.12 300);
   --primary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted: oklch(0.96 0.01 260);
+  --muted-foreground: oklch(0.56 0.01 260);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.88 0.02 260);
+  --ring: oklch(0.7 0.06 320);
+  /* subtle gold/purple accents */
+  --accent: oklch(0.85 0.12 95); /* warm gold highlight */
+  --accent-foreground: oklch(0.12 0 0);
+  /* small accent dot color (default green) */
+  --accent-dot: oklch(0.67 0.16 140);
+
+  /* background gradient stops (light mode) - vertical purple gradient (tuned) */
+  --bg-gradient-top: oklch(0.12 0.18 300); /* deeper purple at the top */
+  --bg-gradient-bottom: oklch(0.95 0.03 300); /* pale lavender at the bottom */
+  --background-image: linear-gradient(180deg, var(--bg-gradient-top), var(--bg-gradient-bottom));
 }
 
 [data-theme='dark'] {
-  --background: oklch(0.145 0 0);
+  /* Theme: Dimension (dark) - deep navy + neon purple/pink accents */
+  --background: oklch(0.06 0.02 260);
   --foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --ring: oklch(0.556 0 0);
+  /* primary is a vivid purple-magenta used for buttons/accents */
+  --primary: oklch(0.65 0.25 320);
+  --primary-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.18 0.01 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+  --destructive: oklch(0.72 0.19 22.216);
+  --border: oklch(1 0 0 / 6%);
+  --ring: oklch(0.6 0.18 320);
+  /* subtle gold/purple accents for dark */
+  --accent: oklch(0.75 0.22 95);
+  --accent-foreground: oklch(0.06 0 0);
+  /* accent dot slightly different in dark */
+  --accent-dot: oklch(0.6 0.14 140);
+
+  /* background gradient stops (dark mode) - vertical deep purple gradient */
+  --bg-gradient-top: oklch(0.12 0.18 320);
+  --bg-gradient-bottom: oklch(0.04 0.04 295);
+  --background-image: linear-gradient(180deg, var(--bg-gradient-top), var(--bg-gradient-bottom));
 }
 
 @layer base {
@@ -75,3 +101,106 @@
     @apply border-border outline-ring/50 tracking-tight;
   }
 }
+
+/* Apply the variable-driven background gradient to the page root */
+@layer base {
+  html,
+  body {
+    background-image: var(--background-image);
+    background-color: var(--background);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+
+/* Component-level rules intentionally omitted — theme should be driven by variables only. */
+
+/* Minimal, variable-only helpers for subtle accents (uses only CSS variables) */
+@layer components {
+  /* navbar: make header background transparent so the gradient shows through */
+  header {
+    background-color: transparent !important;
+    /* keep backdrop blur if present */
+    backdrop-filter: none;
+  }
+  /* small gold dot used in header to show accent */
+  .accent-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: var(--accent-dot);
+    display: inline-block;
+    margin-left: 0.5rem;
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--accent-dot) 40%, transparent);
+    vertical-align: middle;
+  }
+
+  /* subtle purple hover for header nav links (uses --primary) */
+  header nav a:hover,
+  header nav a:active {
+    color: var(--primary) !important;
+    transition: color 160ms ease;
+  }
+}
+
+/* Improve text contrast on top of the gradient without changing core variables:
+   - Provide semi-opaque surfaces for cards and prose blocks using variable-driven tint
+   - Add subtle text-shadows for headings so they stay legible on dark/light stops
+   - Increase the effective foreground for small/metadata text via color-mix to keep readability
+*/
+@layer utilities {
+  /* surface tint used for cards (slightly translucent based on current background) */
+  :root {
+    --surface-tint-light: color-mix(in oklch, var(--background) 88%, oklch(0.98 0.02 260) 12% / 0.75);
+    --surface-tint-dark: color-mix(in oklch, var(--background) 84%, oklch(0.07 0.04 300) 16% / 0.65);
+  }
+
+  /* Apply semi-opaque surfaces to card-like containers to stabilize contrast */
+  .card,
+  .prose,
+  .post-card,
+  .content-hero {
+    background-color: color-mix(in srgb, var(--background) 85%, white 15% / 0.06);
+    border-color: color-mix(in srgb, var(--foreground) 70%, transparent 30% / 0.12);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(6px) saturate(1.02);
+  }
+
+  /* Stronger text for headings and metadata when placed on gradient */
+  h1, h2, h3, h4, h5 {
+    color: color-mix(in oklch, var(--foreground) 88%, var(--primary) 12%);
+    text-shadow: 0 1px 0 color-mix(in srgb, var(--background) 60%, black 40% / 0.25),
+                 0 6px 24px color-mix(in srgb, var(--primary) 30%, transparent 70% / 0.08);
+  }
+
+  /* Body/prose text: boost contrast slightly */
+  body,
+  .prose p,
+  .meta,
+  nav,
+  .post-excerpt {
+    color: color-mix(in oklch, var(--foreground) 80%, black 20%);
+  }
+
+  /* Make small badges and time/author metadata more visible */
+  .badge,
+  .post-meta,
+  .tag {
+    background-color: color-mix(in srgb, var(--background) 82%, black 18% / 0.06);
+    color: color-mix(in oklch, var(--foreground) 92%, var(--accent) 8%);
+    border: 1px solid color-mix(in srgb, var(--foreground) 80%, transparent 20% / 0.08);
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.375rem;
+  }
+
+  /* Ensure header links are readable on both gradient stops */
+  header a,
+  header button {
+    color: color-mix(in oklch, var(--foreground) 90%, var(--primary) 10%);
+    text-shadow: 0 1px 0 color-mix(in srgb, var(--background) 55%, black 45% / 0.15);
+  }
+}
+
+/* The mix-blend-mode inversion has been removed per user request. */
