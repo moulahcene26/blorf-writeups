@@ -4,6 +4,7 @@ import BlogCard from '@/components/BlogCard.astro'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import PageHead from '@/components/PageHead.astro'
 import Layout from '@/layouts/Layout.astro'
+import { BASE } from '@/consts'
 import { getAllAuthors, getPostsByAuthor } from '@/lib/data-utils'
 
 export async function getStaticPaths() {
@@ -27,7 +28,7 @@ const authorPosts = await getPostsByAuthor(author.id)
   />
   <Breadcrumbs
     items={[
-      { href: '/authors', label: 'Authors', icon: 'lucide:users' },
+      { href: `${BASE}/authors`, label: 'Authors', icon: 'lucide:users' },
       { label: author.data.name, icon: 'lucide:user' },
     ]}
   />

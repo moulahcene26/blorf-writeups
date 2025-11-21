@@ -22,7 +22,7 @@ export default defineConfig({
   // When deploying to a subdirectory (e.g. example.com/blorf-writeups/)
   // set the `base` option so generated URLs include the subpath.
   base: '/blorf-writeups/',
-  site: 'https://astro-erudite.vercel.app',
+  site: 'https://moulahcene26.github.io/blorf-writeups/',
   integrations: [
     expressiveCode({
       themes: ['github-light', 'github-dark'],

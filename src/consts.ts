@@ -4,24 +4,27 @@ export const SITE: Site = {
   title: 'blorf-writeups',
   description:
     'Personal Blog where I post writeups on different CTFs I solved or tried to solve.',
-  href: 'https://astro-erudite.vercel.app',
+  href: 'https://moulahcene26.github.io/blorf-writeups',
   author: 'blorf26',
   locale: 'en-US',
   featuredPostCount: 2,
   postsPerPage: 3,
 }
 
+// Base path for deployments under a subdirectory (GitHub Pages)
+export const BASE = '/blorf-writeups'
+
 export const NAV_LINKS: SocialLink[] = [
   {
-    href: '/blog',
+    href: `${BASE}/blog`,
     label: 'blog',
   },
   {
-    href: '/authors',
+    href: `${BASE}/authors`,
     label: 'authors',
   },
   {
-    href: '/about',
+    href: `${BASE}/about`,
     label: 'about',
   },
 ]
