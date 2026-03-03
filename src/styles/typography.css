@@ -30,7 +30,7 @@
     @apply text-foreground text-base leading-7;
 
     :where(p):not(:where(.not-prose, .not-prose *)) {
-      @apply text-foreground/80 my-5;
+      @apply text-foreground my-5;
     }
 
     :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
@@ -80,7 +80,7 @@
     }
 
     :where(li):not(:where(.not-prose, .not-prose *)) {
-      @apply text-foreground/80 pl-2 [&>p]:my-0;
+      @apply text-foreground pl-2 [&>p]:my-0;
     }
 
     :where(ul ul, ol ol, ul ol, ol ul):not(:where(.not-prose, .not-prose *)) {
@@ -118,7 +118,7 @@
     }
 
     :where(td):not(:where(.not-prose, .not-prose *)) {
-      @apply text-foreground/80 small px-4 py-2 align-top break-words [&>*]:first:mt-0! [&>*]:last:mb-0!;
+      @apply text-foreground small px-4 py-2 align-top break-words [&>*]:first:mt-0! [&>*]:last:mb-0!;
       @apply text-left [&[align=center]]:text-center [&[align=right]]:text-right;
     }
 
@@ -141,7 +141,7 @@
     }
 
     :where(.katex-display):not(:where(.not-prose, .not-prose *)) {
-      @apply text-foreground/80 my-6 overflow-x-auto overflow-y-hidden py-2 tracking-normal;
+      @apply text-foreground my-6 overflow-x-auto overflow-y-hidden py-2 tracking-normal;
     }
   }
 }

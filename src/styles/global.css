@@ -46,49 +46,43 @@
 }
 
 :root {
-  /* Theme: Dimension (light fallbacks) - generated 2025-11-20 */
-  --background: oklch(0.995 0 0);
-  --foreground: oklch(0.14 0.01 260);
-  --primary: oklch(0.22 0.12 300);
-  --primary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.96 0.01 260);
-  --muted-foreground: oklch(0.56 0.01 260);
+  /* Theme: Custom Blue Palette */
+  --background: #F7F8F0;
+  --foreground: #355872;
+  --primary: #7AAACE;
+  --primary-foreground: #F7F8F0;
+  --muted: #9CD5FF;
+  --muted-foreground: #355872;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0.02 260);
-  --ring: oklch(0.7 0.06 320);
-  /* subtle gold/purple accents */
-  --accent: oklch(0.85 0.12 95); /* warm gold highlight */
-  --accent-foreground: oklch(0.12 0 0);
-  /* small accent dot color (default green) */
-  --accent-dot: oklch(0.67 0.16 140);
+  --border: #9CD5FF;
+  --ring: #7AAACE;
+  
+  --accent: #9CD5FF; 
+  --accent-foreground: #355872;
+  --accent-dot: #7AAACE;
 
-  /* background gradient stops (light mode) - vertical purple gradient (tuned) */
-  --bg-gradient-top: oklch(0.12 0.18 300); /* deeper purple at the top */
-  --bg-gradient-bottom: oklch(0.95 0.03 300); /* pale lavender at the bottom */
+  --bg-gradient-top: #F7F8F0;
+  --bg-gradient-bottom: color-mix(in srgb, #F7F8F0 60%, #9CD5FF 40%);
   --background-image: linear-gradient(180deg, var(--bg-gradient-top), var(--bg-gradient-bottom));
 }
 
 [data-theme='dark'] {
-  /* Theme: Dimension (dark) - deep navy + neon purple/pink accents */
-  --background: oklch(0.06 0.02 260);
-  --foreground: oklch(0.985 0 0);
-  /* primary is a vivid purple-magenta used for buttons/accents */
-  --primary: oklch(0.65 0.25 320);
-  --primary-foreground: oklch(0.12 0 0);
-  --muted: oklch(0.18 0.01 260);
-  --muted-foreground: oklch(0.7 0.02 260);
+  --background: #355872;
+  --foreground: #F7F8F0;
+  --primary: #9CD5FF;
+  --primary-foreground: #355872;
+  --muted: color-mix(in srgb, #355872 60%, #7AAACE 40%);
+  --muted-foreground: #F7F8F0;
   --destructive: oklch(0.72 0.19 22.216);
-  --border: oklch(1 0 0 / 6%);
-  --ring: oklch(0.6 0.18 320);
-  /* subtle gold/purple accents for dark */
-  --accent: oklch(0.75 0.22 95);
-  --accent-foreground: oklch(0.06 0 0);
-  /* accent dot slightly different in dark */
-  --accent-dot: oklch(0.6 0.14 140);
+  --border: #7AAACE;
+  --ring: #9CD5FF;
 
-  /* background gradient stops (dark mode) - vertical deep purple gradient */
-  --bg-gradient-top: oklch(0.12 0.18 320);
-  --bg-gradient-bottom: oklch(0.04 0.04 295);
+  --accent: #7AAACE;
+  --accent-foreground: #F7F8F0;
+  --accent-dot: #9CD5FF;
+
+  --bg-gradient-top: #355872;
+  --bg-gradient-bottom: color-mix(in srgb, #355872 70%, black 30%);
   --background-image: linear-gradient(180deg, var(--bg-gradient-top), var(--bg-gradient-bottom));
 }
 
@@ -170,9 +164,7 @@
 
   /* Stronger text for headings and metadata when placed on gradient */
   h1, h2, h3, h4, h5 {
-    color: color-mix(in oklch, var(--foreground) 88%, var(--primary) 12%);
-    text-shadow: 0 1px 0 color-mix(in srgb, var(--background) 60%, black 40% / 0.25),
-                 0 6px 24px color-mix(in srgb, var(--primary) 30%, transparent 70% / 0.08);
+    color: var(--foreground);
   }
 
   /* Body/prose text: boost contrast slightly */
@@ -181,7 +173,7 @@
   .meta,
   nav,
   .post-excerpt {
-    color: color-mix(in oklch, var(--foreground) 80%, black 20%);
+    color: var(--foreground);
   }
 
   /* Make small badges and time/author metadata more visible */
@@ -204,3 +196,8 @@
 }
 
 /* The mix-blend-mode inversion has been removed per user request. */
+
+.expressive-code {
+  --ec-frm-inl-bg: color-mix(in srgb, var(--background) 80%, black 20%);
+  --ec-frm-inl-fg: var(--foreground);
+}
