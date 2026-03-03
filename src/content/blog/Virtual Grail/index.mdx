@@ -1,0 +1,159 @@
+---
+title: Virtual Grail [INSANE]
+description: Virtual Grail Osint Challenge
+date: 2026-02-23
+---
+
+# Virtual Grail - Osint \[INSANE]
+
+\-- 496 Points&#x20;
+
+\-- bl0rph @ IrgaZEN CTF TEAM
+
+![](https://content.gitbook.com/content/QVIW5UmXF1bNVQIlR1Am/blobs/wVGoDTmEizBEUXrbyqh9/image.png)
+
+We kick off with this, first thing to do is a classic sherlock scan:
+
+```
+❯ sherlock P4l4d1n_1mp3r14l_0f_L1ght 
+[*] Checking username P4l4d1n_1mp3r14l_0f_L1ght on: 
+[+] Star Citizen: https://robertsspaceindustries.com/citizens/P4l4d1n_1mp3r14l_0f_L1ght
+```
+
+We land on here :
+
+&#x20;
+
+<figure><img src="https://content.gitbook.com/content/QVIW5UmXF1bNVQIlR1Am/blobs/Vr1lvDdoBJZ7RPNKUnuQ/image.png" alt="" /><figcaption></figcaption></figure>
+
+You can see a bunch of stuff right here, a research paper (which is out of scope),
+
+* morse code which translates to : "MYFRIENDSAREWATERANDFIRE."
+* and a username : `P4l4d1n1mp3r14l0fF1r3`
+
+After running a sherlock scan :
+
+```
+❯ sherlock P4l4d1n1mp3r14l0fF1r3 
+[*] Checking username P4l4d1n1mp3r14l0fF1r3 on: 
+[+] GitHub: https://www.github.com/P4l4d1n1mp3r14l0fF1r3
+```
+
+We land on this github account with an interesting bio, a telegram link !
+
+![](https://content.gitbook.com/content/QVIW5UmXF1bNVQIlR1Am/blobs/WfzzQhuScQNUX0bGQIhx/image.png)
+
+Let's follow the link, We land here :
+
+![](https://content.gitbook.com/content/QVIW5UmXF1bNVQIlR1Am/blobs/RY23sgmcbloocE63eJDU/image.png)
+
+Translation:
+
+```
+The IMO number will be important for the future my paladin friends
+Where is Ju5t1c3?
+I am P4l4d1n_1mp3r14l_0f_R3d_D34th btw, and my brother is D34th ofc
+We need to find Ju5t1c3 to infiltrate the Arcane Guardians' Discord
+```
+
+Upon investigation, an IMO number is what appears to be some kind of serial number for ships and boats. after checking the location we stumble upon the following :&#x20;
+
+<figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2F72k3s0oImm0NnhGozkQe%2Fimage24.png?alt=media&#x26;token=af37c9bf-2969-4484-810c-8dd5c1bff86c" alt="" /><figcaption></figcaption></figure>
+
+a ship !! and we got it's name !&#x20;
+
+<figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2FLY9UGcEPCGxYB3yqKk3t%2Fimage23.png?alt=media&#x26;token=a9fa620d-4c4b-46b6-96e9-1fc382a9b6d7" alt="" /><figcaption></figcaption></figure>
+
+<figure><img src="https://media.discordapp.net/attachments/1314591517578498071/1467242023059980330/image.png?ex=697fab1e&#x26;is=697e599e&#x26;hm=dcd47b58ea7195d6bb939c93355e358ce675d0c035568bfbea6b75c061b85545&#x26;=&#x26;format=webp&#x26;quality=lossless&#x26;width=1284&#x26;height=492" alt="" /><figcaption></figcaption></figure>
+
+MS World Discoverer, now we can go to any website online and check its IMO number and it is : `7349053` (we leave it for later),
+
+Now let's follow the rest of the clues, the telegram channel spoke about some kind of guy called Ju5t1c3 who will give us the access to the discord, after joining the discord we find this :
+
+&#x20;
+
+<figure><img src="https://media.discordapp.net/attachments/1314591517578498071/1467239930081317039/image.png?ex=697fa92b&#x26;is=697e57ab&#x26;hm=69b915c5f2d0f955c3ec6159cb627e4300fbca987e71d51cbe5faa4bd1e79ad0&#x26;=&#x26;format=webp&#x26;quality=lossless&#x26;width=1246&#x26;height=249" alt="" /><figcaption></figcaption></figure>
+
+Lets run a sherlock scan on Ju5t1c3 (and his possible usernames). after alot of trial and error we stumble upon the right username which has returned a response :
+
+⁨`❯ sherlock P4l4d1n_1mp3r14l_0f_Ju5t1c3 [*] Checking username P4l4d1n_1mp3r14l_0f_Ju5t1c3 on: [+] Tenor: https://tenor.com/users/P4l4d1n_1mp3r14l_0f_Ju5t1c3`
+
+bingo ! let's check the tenor account:
+
+<figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2FSim96mdLynbwo0I5WoYS%2Fimage25.png?alt=media&#x26;token=a7a7284c-edbe-40e7-b3fa-4fb68048b477" alt="" /><figcaption></figcaption></figure>
+
+We can see alot of interesting stuff here :
+
+* some Braille language, translates to : `J’apporte la paix au sein des paladins.`
+* and another small detail in the profile picture :
+
+<figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2FpZH49UlSNIIKgyVXqBmP%2Ftenor.png?alt=media&#x26;token=9ab05c02-b174-4f41-87af-a20ced3633fe" alt="" /><figcaption></figcaption></figure>
+
+we see a hash (an MD5 hash): `5254532a2088fd117dfc7671d85c37f9` There's lot's of websites out there to crack hashes, which is what we did, and we get a response, **W\@chtw00rd**.
+
+After submitting the password we are granted the rank of Guardian at the discord server :&#x20;
+
+<figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2FTg6E60Twbxflh5bTAuTU%2F2026-02-05_00-15.png?alt=media&#x26;token=a9e8b0da-8ac9-4622-9ff1-84e45e86bfc4" alt="" /><figcaption></figcaption></figure>
+
+and the following channel unlocks !!
+
+<figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2FWjF66569GmK75QF27yiB%2Fimage27.png?alt=media&#x26;token=dda3a278-38f1-493f-878e-10baf8cf8fbc" alt="" /><figcaption></figcaption></figure>
+
+now we can see lots of interesting characters, but after deep scanning and researching, this particular one stood out :
+
+<figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2F62taeW533Onpx3pYC7mi%2Fimage29.png?alt=media&#x26;token=c9308d81-c5d6-47c9-99bb-68ad6e23136c" alt="" /><figcaption></figcaption></figure>
+
+Once again, we run a sherlock scan on him XD:
+
+```
+❯ sherlock 0b1-w4n-K3n0b1 
+[*] Checking username 0b1-w4n-K3n0b1 on: 
+[+] GitHub: https://www.github.com/0b1-w4n-K3n0b1
+```
+
+We got a github ! Let's check it out !&#x20;
+
+<div><figure><img src="https://media.discordapp.net/attachments/1314591517578498071/1467242605359272131/image.png?ex=697faba9&#x26;is=697e5a29&#x26;hm=4e5712027ef4c4cdfdafe84ba07bc8accdd0fd2f87da65989454231eec03f693&#x26;=&#x26;format=webp&#x26;quality=lossless&#x26;width=1576&#x26;height=615" alt="" /><figcaption></figcaption></figure> <figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2Fa1NBh0Yt7hdeAtJWM4O6%2Fimage30.png?alt=media&#x26;token=aff83b1a-71d7-4197-b07e-91f79bed08b2" alt="" /><figcaption></figcaption></figure></div>
+
+IT IS our guy, we find this interesting repo right here :&#x20;
+
+<div><figure><img src="https://media.discordapp.net/attachments/1314591517578498071/1467242836440387665/image.png?ex=697fabe0&#x26;is=697e5a60&#x26;hm=e72691364b101a7b81759150edeee82db0268a1f7c4dfe0270ffd92bbcac8649&#x26;=&#x26;format=webp&#x26;quality=lossless" alt="" /><figcaption></figcaption></figure> <figure><img src="https://610342972-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FQVIW5UmXF1bNVQIlR1Am%2Fuploads%2FQumekN9TC43w8DvhrVhf%2Fimage31.png?alt=media&#x26;token=eac92414-5f0d-490a-8668-3aa609a36525" alt="" /><figcaption></figcaption></figure></div>
+
+We have a zipped archive that might contain some good info, but the password for it is:
+
+```
+OMI/IMO + DC-3_AVION_REGISTRATION + DC-6_AVION_IMMATRICULATION
+```
+
+great ! we already have the IMO, Let's investigate the crashes ..... Long story short (after using reverse image search tools like TinEye and some basic google dorking) we got results matching the two crashes! The first one :
+
+* [DC3 Plane Crash](https://en.wikipedia.org/wiki/1973_S%C3%B3lheimasandur_Douglas_C-117D_crash)
+* DC6 Plane Crash :
+
+![](https://media.discordapp.net/attachments/1314591517578498071/1467243677314449672/image.png?ex=697faca8\&is=697e5b28\&hm=0df7ea8765bd653a42d4eee91a7b67ece357a5a043a8f581dc79e8c0d974e460&=\&format=webp\&quality=lossless\&width=244\&height=407)
+
+and the Registration and Immatriculation are publicly available!
+
+-Registration: 17171
+
+-Immatriculation: F-ZBBU
+
+Now we can construct the password for the archive !
+
+```
+OMI/IMO + DC-3_AVION_REGISTRATION + DC-6_AVION_IMMATRICULATION
+```
+
+so the password is : 7349053+17171+F-ZBBU = **734905317171F-ZBBU**
+
+we extract the archive and ....
+
+**EUREKA !**
+
+![](https://media.discordapp.net/attachments/1314591517578498071/1467243947087892512/image.png?ex=697face9\&is=697e5b69\&hm=2f78ee62fcf6967a9a461b042fef4aef6b9c133d0fc9ce188982e10c1edd6bb9&=\&format=webp\&quality=lossless\&width=868\&height=836)
+
+**The Flag is** `JDHACK{CeluiQU!ATTRaP3cEgraalM3Ritelap1USGRandeDesBI3RES}`.
+
+What a challenge, special thanks to the IrgaZEN CTF Team (Specifically my teammates sp1n0zza and z3Ro whom I would've never solved the challenge without )
+
+Check This out ! : [IrgaZEN's Discord Server](https://irgazen.abdelmounaim.xyz)

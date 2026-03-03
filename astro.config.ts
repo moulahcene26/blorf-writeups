@@ -21,8 +21,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   // When deploying to a subdirectory (e.g. example.com/blorf-writeups/)
   // set the `base` option so generated URLs include the subpath.
-  base: '/blorf-writeups/',
-  site: 'https://moulahcene26.github.io/blorf-writeups/',
+  base: '/',
+  site: 'https://moulahcene26.github.io/',
   integrations: [
     expressiveCode({
       themes: ['github-light', 'github-dark'],
